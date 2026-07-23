@@ -1,0 +1,48 @@
+_metadata:
+  major_version: 1
+  minor_version: 1
+
+display_information:
+  name: Ueno Bot
+  description: A small helper bot with facts, jokes, and status commands.
+  background_color: "#4A154B"
+
+features:
+  bot_user:
+    display_name: Ueno Bot
+    always_online: false
+  slash_commands:
+    - command: /oliverueno-ping
+      description: Check if Ueno Bot is online
+      should_escape: false
+    - command: /oliverueno-help
+      description: Show all Ueno Bot commands
+      should_escape: false
+    - command: /oliverueno-catfact
+      description: Get a random cat fact
+      should_escape: false
+    - command: /oliverueno-joke
+      description: Get a random joke
+      should_escape: false
+    - command: /oliverueno-status
+      description: Check the bot's uptime
+      should_escape: false
+
+oauth_config:
+  scopes:
+    bot:
+      - app_mentions:read
+      - chat:write
+      - commands
+      - im:history
+
+settings:
+  event_subscriptions:
+    bot_events:
+      - app_mention
+      - message.im
+  interactivity:
+    is_enabled: true
+  org_deploy_enabled: false
+  socket_mode_enabled: true
+  token_rotation_enabled: false

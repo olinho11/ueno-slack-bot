@@ -1,0 +1,16 @@
+[Unit]
+Description=Ueno Slack Bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/ueno-slack-bot
+ExecStart=/usr/bin/node index.js
+Environment=NODE_ENV=production
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
