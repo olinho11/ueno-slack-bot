@@ -2,6 +2,7 @@ require("dotenv").config({ quiet: true });
 
 const { App } = require("@slack/bolt");
 const axios = require("axios");
+const http = require("http");
 
 const missingTokens = ["SLACK_BOT_TOKEN", "SLACK_APP_TOKEN"].filter(
   (name) => !process.env[name]
@@ -101,5 +102,14 @@ app.error(async (error) => {
 
 (async () => {
   await app.start();
+
+  const port = process.env.PORT || 3000;
+  http
+    .createServer((request, response) => {
+      response.writeHead(200, { "Content-Type": "text/plain" });
+      response.end("Ueno Bot is running!");
+    })
+    .listen(port);
+
   console.log("Ueno Bot is running!");
 })();
